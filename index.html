@@ -1,495 +1,484 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>M L Net | Conectividade que transforma</title>
-    <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Google Fonts (tipografia inovadora) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- AOS Animação (efeitos suaves) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Bah Objetos | Decoração que Transforma</title>
+  <!-- Bootstrap 5 + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 (ícones inovadores) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts (tipografia moderna) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #0f172a;
-            overflow-x: hidden;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FEFAF6;
+      color: #2C2A29;
+      scroll-behavior: smooth;
+    }
 
-        h1, h2, h3, h4, .navbar-brand, .btn, .display-font {
-            font-family: 'Space Grotesk', monospace;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
+    h1, h2, h3, h4, .logo-font {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
 
-        /* Cores inovadoras: azul profundo + toque neon/ciano */
-        :root {
-            --primary-dark: #0a1a2f;
-            --primary-electric: #00e0ff;
-            --primary-neon: #0ae0ff;
-            --secondary-glow: #6c63ff;
-            --accent-coral: #ff5e7c;
-            --gray-bg: #f1f5f9;
-        }
+    /* Paleta inovadora e acolhedora */
+    :root {
+      --terracota: #E27B5C;
+      --oliva: #A3B18A;
+      --deep-teal: #2F5D62;
+      --areia: #F4EADB;
+      --cinza-escuro: #3A3A3A;
+      --destaque-light: #FFE8D6;
+    }
 
-        .bg-gradient-hero {
-            background: linear-gradient(135deg, #071426 0%, #0b2b3f 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .bg-gradient-hero::before {
-            content: "";
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 70%;
-            height: 140%;
-            background: radial-gradient(circle, rgba(0,224,255,0.08) 0%, rgba(10,26,47,0) 80%);
-            pointer-events: none;
-        }
-
-        .navbar {
-            backdrop-filter: blur(12px);
-            background: rgba(7, 20, 38, 0.85) !important;
-            transition: all 0.3s;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.7rem;
-            background: linear-gradient(120deg, #fff, #0ae0ff);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent !important;
-        }
-
-        .btn-neon {
-            background: transparent;
-            border: 1.5px solid var(--primary-electric);
-            color: white;
-            border-radius: 40px;
-            padding: 10px 28px;
-            transition: 0.3s;
-            font-weight: 600;
-        }
-
-        .btn-neon:hover {
-            background: var(--primary-electric);
-            color: #0a1a2f;
-            box-shadow: 0 0 12px rgba(0,224,255,0.6);
-            transform: translateY(-2px);
-        }
-
-        .btn-primary-custom {
-            background: linear-gradient(95deg, #00e0ff, #6c63ff);
-            border: none;
-            border-radius: 40px;
-            padding: 12px 32px;
-            font-weight: 700;
-            color: #0a1a2f;
-            transition: all 0.3s;
-        }
-
-        .btn-primary-custom:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px -8px rgba(0,224,255,0.5);
-            color: #0a1a2f;
-        }
-
-        .card-glass {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(0px);
-            border-radius: 32px;
-            border: 1px solid rgba(0,224,255,0.2);
-            transition: all 0.3s;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
-        }
-
-        .card-glass:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-electric);
-            box-shadow: 0 25px 40px -12px rgba(0,224,255,0.2);
-        }
-
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            background: rgba(10, 224, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: var(--primary-electric);
-            margin-bottom: 1.2rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
-        }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 70px;
-            height: 4px;
-            background: linear-gradient(90deg, #00e0ff, #6c63ff);
-            border-radius: 4px;
-        }
-
-        .info-card {
-            background: white;
-            border-radius: 28px;
-            transition: 0.2s;
-            border: 1px solid #e2e8f0;
-        }
-
-        .footer {
-            background: #071426;
-            border-top: 1px solid rgba(0,224,255,0.2);
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            color: white;
-            box-shadow: 0 8px 20px rgba(37,211,102,0.3);
-            z-index: 99;
-            transition: 0.2s;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.08);
-            background: #20b859;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
-            }
-            .hero-title {
-                font-size: 2.3rem;
-            }
-        }
-
-        .badge-years {
-            background: rgba(0,224,255,0.2);
-            backdrop-filter: blur(4px);
-            border-radius: 100px;
-            padding: 6px 14px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #0ae0ff;
-        }
-        
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #0a1a2f, #0b2b3f);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-    </style>
+    .bg-areia {
+      background-color: var(--areia);
+    }
+    .btn-terracota {
+      background-color: var(--terracota);
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      padding: 10px 24px;
+      border-radius: 40px;
+    }
+    .btn-terracota:hover {
+      background-color: #c95f42;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      color: white;
+    }
+    .btn-outline-teal {
+      border: 2px solid var(--deep-teal);
+      color: var(--deep-teal);
+      border-radius: 40px;
+      transition: 0.3s;
+    }
+    .btn-outline-teal:hover {
+      background-color: var(--deep-teal);
+      color: white;
+    }
+    .text-teal {
+      color: var(--deep-teal);
+    }
+    .text-terracota {
+      color: var(--terracota);
+    }
+    .bg-gradient-soft {
+      background: linear-gradient(135deg, #FFF5EC 0%, #FEF1E6 100%);
+    }
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s;
+      border: none;
+      border-radius: 28px;
+      overflow: hidden;
+      background: white;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+    }
+    .hero-section {
+      background: linear-gradient(97deg, rgba(47,93,98,0.82) 0%, rgba(226,123,92,0.7) 100%), url('https://images.pexels.com/photos/1571460/table-decor-home-decoration-interior-design-1571460.jpg?auto=compress&cs=tinysrgb&w=1600');
+      background-size: cover;
+      background-position: center 35%;
+      background-blend-mode: overlay;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .hero-content h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 3px;
+      background: var(--terracota);
+      border-radius: 4px;
+    }
+    .info-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .info-card i {
+      font-size: 2rem;
+      color: var(--terracota);
+      margin-bottom: 1rem;
+    }
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--destaque-light);
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: var(--terracota);
+      font-size: 1.5rem;
+    }
+    footer {
+      background: #1E2A2E;
+      color: #e0e0e0;
+    }
+    footer a {
+      color: #e0c3a8;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    footer a:hover {
+      color: var(--terracota);
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50px;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      font-size: 28px;
+      line-height: 60px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      z-index: 100;
+      transition: 0.2s;
+    }
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.05);
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-section {
+        min-height: 70vh;
+      }
+    }
+    .img-fluid-soft {
+      border-radius: 28px;
+      object-fit: cover;
+      width: 100%;
+      height: 220px;
+      transition: 0.3s;
+    }
+    .product-img {
+      height: 240px;
+      object-fit: cover;
+      width: 100%;
+    }
+    .badge-date {
+      background: var(--deep-teal);
+      color: white;
+      border-radius: 30px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+    }
+  </style>
 </head>
 <body>
 
-<!-- Botão flutuante Whatsapp -->
-<a href="https://wa.me/5591992310808?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20planos%20da%20M%20L%20Net." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-    <i class="bi bi-whatsapp"></i>
+<!-- WhatsApp flutuante -->
+<a href="https://wa.me/5551998078991?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Bah%20Objetos." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
 </a>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
-    <div class="container">
-        <a class="navbar-brand" href="#">M L<span style="color:#0ae0ff;"> NET</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarMain">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
-                <li class="nav-item"><a class="nav-link active" href="#home">Início</a></li>
-                <li class="nav-item"><a class="nav-link" href="#planos">Planos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
-            </ul>
-            <a href="#contato" class="btn btn-neon ms-3 d-none d-lg-inline-block"><i class="bi bi-lightning-charge-fill me-1"></i> Conectar agora</a>
-        </div>
+<nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-3" href="#" style="font-family: 'Playfair Display', serif;">
+      <i class="fas fa-palette text-terracota me-2"></i>Bah Objetos
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+        <li class="nav-item"><a class="nav-link fw-semibold" href="#home">Início</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold" href="#destaques">Destaques</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold" href="#contato">Contato</a></li>
+      </ul>
     </div>
+  </div>
 </nav>
 
 <!-- HERO SECTION -->
-<section id="home" class="bg-gradient-hero text-white pt-5 mt-5" style="padding-top: 6rem !important;">
-    <div class="container py-5">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-7" data-aos="fade-up" data-aos-duration="800">
-                <div class="badge-years mb-3 d-inline-flex"><i class="bi bi-star-fill me-1" style="color:#0ae0ff;"></i> 6+ anos de inovação</div>
-                <h1 class="display-4 fw-bold hero-title">Internet Fibra que <span style="color:#0ae0ff;">acelera</span> seu futuro</h1>
-                <p class="lead mt-3 opacity-75">Conectividade ultrarrápida, estabilidade e suporte humano. Transforme sua experiência digital com a M L Net, o provedor que entende Capanema e leva alta performance para sua casa ou negócio.</p>
-                <div class="d-flex flex-wrap gap-3 mt-4">
-                    <a href="#planos" class="btn btn-primary-custom btn-lg px-4"><i class="bi bi-wifi"></i> Conheça os planos</a>
-                    <a href="tel:+5591992310808" class="btn btn-outline-light btn-lg px-4"><i class="bi bi-telephone-fill"></i> (91) 99231-0808</a>
-                </div>
-                <div class="row mt-5 pt-3 g-3">
-                    <div class="col-sm-4 d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-info fs-4"></i> <span>Fibra 100%</span></div>
-                    <div class="col-sm-4 d-flex align-items-center gap-2"><i class="bi bi-shield-check text-info fs-4"></i> <span>Suporte Local</span></div>
-                    <div class="col-sm-4 d-flex align-items-center gap-2"><i class="bi bi-graph-up text-info fs-4"></i> <span>Baixa latência</span></div>
-                </div>
-            </div>
-            <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-delay="200">
-                <img src="https://placehold.co/600x500/0a1a2f/00e0ff?text=M+L+NET+FIBRA" alt="Ilustração fibra óptica" class="img-fluid rounded-4 shadow-lg" style="background: linear-gradient(145deg, #0c2940, #071426);">
-                <!-- Imagem ilustrativa inovadora (placeholder com design) mas podemos usar SVG simbólico -->
-            </div>
-        </div>
+<section id="home" class="hero-section">
+  <div class="container hero-content text-white">
+    <div class="row">
+      <div class="col-lg-7">
+        <span class="badge bg-light text-dark mb-3 py-2 px-3 rounded-pill"><i class="fas fa-star-of-life me-1"></i> 6 anos transformando lares</span>
+        <h1 class="display-3 fw-bold">Beleza,<br>Arte & Decoração</h1>
+        <p class="lead my-4">Objetos que contam histórias e trazem personalidade para cada ambiente. Inovação e estilo em cada detalhe.</p>
+        <a href="#destaques" class="btn btn-terracota me-3 shadow-sm"><i class="fas fa-gem me-2"></i>Explorar coleções</a>
+        <a href="#contato" class="btn btn-outline-light rounded-pill px-4"><i class="fas fa-store me-2"></i>Visite nossa loja</a>
+      </div>
     </div>
-    <div class="wave-bottom" style="height: 60px; background: linear-gradient(145deg, #f8fafc 30%, transparent);"></div>
+  </div>
 </section>
 
-<!-- DIFERENCIAIS COM ÍCONES E FRASES INOVADORAS -->
-<section class="py-5" style="background: #f8fafc;">
-    <div class="container py-4">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <span class="badge bg-dark text-info px-3 py-2 rounded-pill mb-2"><i class="bi bi-stars"></i> Experiência ML Net</span>
-            <h2 class="section-title">Conectividade que inspira</h2>
-            <p class="lead text-secondary mt-3">Mais que internet, um novo padrão para Capanema e região.</p>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-                <div class="card-glass p-4 text-center h-100">
-                    <div class="icon-circle mx-auto"><i class="bi bi-cpu fs-1"></i></div>
-                    <h4 class="fw-bold">Tecnologia XPTO Fiber</h4>
-                    <p class="text-secondary">Rede de última geração com latência reduzida e simetria real: upload e download na mesma velocidade para você jogar, trabalhar e assistir sem travar.</p>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-                <div class="card-glass p-4 text-center h-100">
-                    <div class="icon-circle mx-auto"><i class="bi bi-shield-lock-fill fs-1"></i></div>
-                    <h4 class="fw-bold">Segurança Digital</h4>
-                    <p class="text-secondary">Proteção contra ameaças online, firewall integrado e navegação segura para sua família e negócio. Conte com a tranquilidade ML Net.</p>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-                <div class="card-glass p-4 text-center h-100">
-                    <div class="icon-circle mx-auto"><i class="bi bi-headset fs-1"></i></div>
-                    <h4 class="fw-bold">Atendimento Humanizado</h4>
-                    <p class="text-secondary">Equipe técnica local, suporte rápido via WhatsApp e compromisso com a solução no menor tempo. Sua satisfação é nossa prioridade.</p>
-                </div>
-            </div>
-        </div>
+<!-- Frases + Cores inovadoras (seção de citação) -->
+<div class="container-fluid py-4 bg-gradient-soft">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <i class="fas fa-quote-left fa-2x text-terracota opacity-50 mb-3"></i>
+        <h3 class="fw-light fst-italic" style="color: #2F5D62;">“Cada objeto é uma inspiração. Decore com alma, viva com cor.”</h3>
+        <p class="mt-2"><i class="fas fa-feather-alt text-terracota me-2"></i> Bah Objetos - Estilo que acolhe</p>
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- SOBRE + INFORMAÇÕES DA EMPRESA -->
+<section id="sobre" class="py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <span class="badge-date mb-3 d-inline-block"><i class="far fa-calendar-alt me-1"></i> Desde 21/10/2019</span>
+        <h2 class="section-title">Sobre a Bah Objetos</h2>
+        <p class="mt-3 fs-5">Somos uma empresa apaixonada por decoração e materiais que transformam ambientes. Com criatividade e curadoria especial, oferecemos peças exclusivas para quem busca estilo, conforto e originalidade.</p>
+        <p>Com mais de 6 anos de história em Porto Alegre, a <strong class="text-terracota">Bah Objetos</strong> se consolida como referência em artigos de decoração, sempre trazendo tendências e produtos que encantam. Nossa missão é levar personalidade a cada lar, unindo funcionalidade e beleza.</p>
+        <div class="row mt-4">
+          <div class="col-sm-6 mb-3">
+            <div class="info-card">
+              <i class="fas fa-building"></i>
+              <h5 class="fw-bold">Razão Social</h5>
+              <p class="small">Guimaraes - Comercio de Materiais de Decoracoes Ltda.</p>
+              <hr>
+              <i class="fas fa-id-card"></i>
+              <h5 class="fw-bold mt-2">CNPJ</h5>
+              <p class="small">35.255.012/0001-41</p>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-3">
+            <div class="info-card">
+              <i class="fas fa-map-marker-alt"></i>
+              <h5 class="fw-bold">Inscrição Estadual (RS)</h5>
+              <p>096/3792440</p>
+              <i class="fas fa-chart-line mt-2"></i>
+              <h5 class="fw-bold mt-2">Situação Cadastral</h5>
+              <p class="text-success fw-semibold"><i class="fas fa-check-circle"></i> ATIVA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="bg-white p-4 rounded-4 shadow-sm border-0">
+          <h4 class="text-teal"><i class="fas fa-store me-2"></i> Dados cadastrais</h4>
+          <ul class="list-unstyled mt-3">
+            <li class="mb-3"><i class="fas fa-tag text-terracota me-3 w-25px"></i> <strong>Nome Fantasia:</strong> Bah Objetos</li>
+            <li class="mb-3"><i class="fas fa-calendar-week text-terracota me-3"></i> <strong>Data de Abertura:</strong> 21 de outubro de 2019 <span class="badge bg-secondary ms-2">6 anos, 6 meses e 1 dia</span></li>
+            <li class="mb-3"><i class="fas fa-briefcase text-terracota me-3"></i> <strong>Atividade Principal (CNAE):</strong> 47.89-0-99 - Comércio varejista de outros produtos não especificados anteriormente</li>
+            <li class="mb-3"><i class="fas fa-flag-checkered text-terracota me-3"></i> <strong>Porto Alegre, RS</strong> | Loja física e atendimento especializado</li>
+          </ul>
+          <div class="alert alert-light border-start border-4 border-terracota mt-2">
+            <i class="fas fa-heart text-terracota me-2"></i> "Transformamos casas em lares com peças autorais e decoração inovadora."
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PLANOS COM INFORMAÇÕES MODERNAS -->
-<section id="planos" class="py-5 bg-white">
-    <div class="container py-4">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="section-title">Planos Sob Medida</h2>
-            <p class="text-secondary mt-3">Escolha o plano ideal para sua navegação, do básico ao ultra conectado.</p>
-        </div>
-        <div class="row g-4 justify-content-center">
-            <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
-                <div class="card info-card h-100 p-4 text-center">
-                    <i class="bi bi-wifi fs-1 text-info"></i>
-                    <h3 class="mt-3 fw-bold">300 Mega</h3>
-                    <div class="display-6 fw-bold text-dark">R$ 89,90<span class="fs-6 text-secondary">/mês</span></div>
-                    <ul class="list-unstyled mt-4 text-start">
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Download 300 Mbps</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Upload 300 Mbps</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Wi-Fi 6 de alto desempenho</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Suporte prioritário</li>
-                    </ul>
-                    <div class="mt-auto"><a href="https://wa.me/5591992310808?text=Olá!%20Tenho%20interesse%20no%20plano%20300%20Mega" class="btn btn-outline-info rounded-pill w-100">Assinar via WhatsApp</a></div>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
-                <div class="card info-card h-100 p-4 text-center border-info shadow">
-                    <i class="bi bi-lightning-charge-fill fs-1 text-warning"></i>
-                    <h3 class="mt-3 fw-bold">500 Mega</h3>
-                    <div class="display-6 fw-bold text-dark">R$ 119,90<span class="fs-6 text-secondary">/mês</span></div>
-                    <ul class="list-unstyled mt-4 text-start">
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Download 500 Mbps</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Upload 500 Mbps</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Roteador Mesh incluso</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Instalação grátis</li>
-                    </ul>
-                    <div class="mt-auto"><a href="https://wa.me/5591992310808?text=Quero%20contratar%20o%20plano%20500%20Mega%20M%20L%20NET" class="btn btn-info rounded-pill w-100 text-white">Contrate já</a></div>
-                </div>
-            </div>
-            <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
-                <div class="card info-card h-100 p-4 text-center">
-                    <i class="bi bi-gem fs-1 text-primary"></i>
-                    <h3 class="mt-3 fw-bold">1 GIGA</h3>
-                    <div class="display-6 fw-bold text-dark">R$ 179,90<span class="fs-6 text-secondary">/mês</span></div>
-                    <ul class="list-unstyled mt-4 text-start">
-                        <li><i class="bi bi-check-lg text-info me-2"></i> 1000 Mbps (1Gb)</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Fibra óptica dedicada</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Suporte VIP 24h</li>
-                        <li><i class="bi bi-check-lg text-info me-2"></i> Bônus em streaming</li>
-                    </ul>
-                    <div class="mt-auto"><a href="https://wa.me/5591992310808?text=Quero%20o%20plano%20Giga%20da%20M%20L%20NET" class="btn btn-outline-info rounded-pill w-100">Quero 1 Giga</a></div>
-                </div>
-            </div>
-        </div>
+<!-- PRODUTOS EM DESTAQUE (IMAGENS INOVADORAS) -->
+<section id="destaques" class="py-5 bg-areia">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title d-inline-block">Peças que inspiram</h2>
+      <p class="mt-3">Objetos exclusivos para cada estilo – moderno, rústico, minimalista ou contemporâneo.</p>
     </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-hover h-100">
+          <img src="https://images.pexels.com/photos/1103195/flowers-vase-decorative-accessories-1103195.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top product-img" alt="Vaso decorativo artesanal">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title fw-bold">Vasos Artesanais</h5>
+              <i class="fas fa-leaf text-terracota"></i>
+            </div>
+            <p class="card-text text-muted">Cerâmica pintada à mão, tons terrosos e acabamento único para trazer vida à sua sala.</p>
+            <span class="badge bg-light text-dark rounded-pill"><i class="fas fa-star"></i> Exclusivo</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-hover h-100">
+          <img src="https://images.pexels.com/photos/1040880/coffee-cup-mug-cup-of-coffee-1040880.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top product-img" alt="Canecas e louças decorativas">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Louças autorais</h5>
+            <p class="card-text text-muted">Canecas, pratos e sousplats com design inovador. Ideal para refeições com estilo e sofisticação.</p>
+            <span class="badge bg-light text-dark rounded-pill"><i class="fas fa-palette"></i> Edição limitada</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-hover h-100">
+          <img src="https://images.pexels.com/photos/1192766/light-bulb-lamp-table-lamp-decoration-1192766.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top product-img" alt="Luminárias e abajures">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Luminárias orgânicas</h5>
+            <p class="card-text text-muted">Iluminação acolhedora com design escultural. Peças que criam atmosfera e aconchego.</p>
+            <span class="badge bg-light text-dark rounded-pill"><i class="fas fa-lightbulb"></i> Design inovador</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <p class="fst-italic"><i class="fas fa-comment-dots text-terracota"></i> "Cada objeto tem uma história. Conheça nossa coleção completa na loja física!"</p>
+    </div>
+  </div>
 </section>
 
-<!-- SOBRE NÓS COM INFORMAÇÕES COMPLETAS (CNPJ, ABERTURA, ATIVIDADES) -->
-<section id="sobre" class="py-5" style="background: #f1f5fc;">
-    <div class="container py-4">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
-                <span class="badge bg-info bg-opacity-25 text-dark mb-2 py-2 px-3 rounded-pill"><i class="bi bi-building"></i> Sobre a M L Net</span>
-                <h2 class="display-5 fw-bold">Provedor 100% paraense, <span class="text-info">conectando pessoas</span> desde 2020</h2>
-                <p class="mt-3 lead">A <strong>M L Net Serv. de Telecomunicacoes LTDA</strong> nasceu com a missão de levar internet de verdade para Capanema e região. Atuamos com responsabilidade, tecnologia de ponta e atendimento ágil.</p>
-                <div class="row mt-4">
-                    <div class="col-sm-6 mb-3">
-                        <div class="d-flex"><i class="bi bi-cnpj fs-3 me-3 text-info"></i><div><strong>CNPJ</strong><br>36.641.406/0001-09</div></div>
-                    </div>
-                    <div class="col-sm-6 mb-3">
-                        <div class="d-flex"><i class="bi bi-calendar-check fs-3 me-3 text-info"></i><div><strong>Fundação</strong><br>11/03/2020 • 6 anos e 19 dias</div></div>
-                    </div>
-                    <div class="col-sm-6 mb-3">
-                        <div class="d-flex"><i class="bi bi-activity fs-3 me-3 text-info"></i><div><strong>Situação Cadastral</strong><br>Ativa • CNAE: 61.90-6-01</div></div>
-                    </div>
-                    <div class="col-sm-6 mb-3">
-                        <div class="d-flex"><i class="bi bi-geo-alt-fill fs-3 me-3 text-info"></i><div><strong>Localização</strong><br>Av. Barao de Capanema, 989 - Centro, Capanema/PA</div></div>
-                    </div>
-                </div>
-                <div class="alert alert-light mt-2 border-0 shadow-sm"><i class="bi bi-envelope-paper-fill me-2 text-info"></i> Correspondência: M L Net Serv. de Telecomunicacoes LTDA, Av. Barao de Capanema 989, Centro, Capanema - PA, CEP 68700-005</div>
+<!-- CONTATO, LOCALIZAÇÃO E CORRESPONDÊNCIA -->
+<section id="contato" class="py-5">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <h2 class="section-title">Fale conosco</h2>
+        <p class="mt-3">Estamos prontos para atender você com peças exclusivas e atendimento personalizado. Visite nossa loja ou entre em contato.</p>
+        <div class="mt-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <h6 class="mb-0 fw-bold">Telefone / WhatsApp</h6>
+              <a href="tel:+5551998078991" class="text-decoration-none text-dark">(51) 99807-8991</a>
+              <span class="mx-2">•</span>
+              <a href="https://wa.me/5551998078991?text=Olá!%20Gostaria%20de%20informações%20sobre%20decoração" class="text-success fw-semibold" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
             </div>
-            <div class="col-lg-6 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-                <div class="card-glass p-4 bg-white">
-                    <div class="d-flex align-items-center gap-3 mb-3">
-                        <i class="bi bi-quote fs-1 text-info"></i>
-                        <h4 class="mb-0 fw-bold">Compromisso com a excelência</h4>
-                    </div>
-                    <p class="fst-italic">"Somos especialistas em conectar famílias e empresas com a internet de verdade: estável, rápida e com suporte que resolve. Nossa trajetória de 6 anos reflete o respeito e confiança dos clientes de Capanema."</p>
-                    <hr>
-                    <div class="d-flex justify-content-between flex-wrap">
-                        <div><i class="bi bi-trophy-fill text-warning"></i> <strong>+2.500</strong> clientes ativos</div>
-                        <div><i class="bi bi-cloud-check-fill text-info"></i> 99.8% de uptime</div>
-                        <div><i class="bi bi-star-fill text-info"></i> Nota 4.9/5</div>
-                    </div>
-                </div>
-                <div class="mt-4 d-flex gap-3 justify-content-start">
-                    <a href="mailto:marcosabreu@iblnet.com.br" class="btn btn-outline-dark rounded-pill"><i class="bi bi-envelope"></i> Enviar e-mail</a>
-                    <a href="tel:+5591992310808" class="btn btn-dark rounded-pill"><i class="bi bi-telephone"></i> (91) 99231-0808</a>
-                </div>
+          </div>
+          <div class="d-flex align-items-center mb-4">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h6 class="mb-0 fw-bold">E-mail</h6>
+              <a href="mailto:contato@bahbaloes.com.br" class="text-decoration-none text-dark">contato@bahbaloes.com.br</a>
+              <p class="small text-muted mb-0">Respondemos em até 24h úteis</p>
             </div>
+          </div>
+          <div class="d-flex align-items-center mb-4">
+            <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+            <div>
+              <h6 class="mb-0 fw-bold">Endereço da loja</h6>
+              <p class="mb-0">Avenida Para, 1301 - Bairro Navegantes<br>Porto Alegre - RS, CEP 90240-592</p>
+              <a href="https://maps.google.com/?q=Avenida+Para+1301+Porto+Alegre+RS" target="_blank" class="small text-terracota"><i class="fas fa-directions"></i> Ver rotas no mapa</a>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="bg-white p-3 rounded-4 shadow-sm h-100">
+          <h5 class="fw-bold text-teal"><i class="fas fa-location-dot me-2"></i> Localização e Correspondência</h5>
+          <div class="ratio ratio-16x9 mt-3 rounded-3 overflow-hidden shadow-sm">
+            <iframe src="https://maps.google.com/maps?q=Avenida%20Para%201301%20Porto%20Alegre%20RS&t=&z=16&ie=UTF8&iwloc=&output=embed" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          <div class="mt-4 p-3 bg-light rounded-3">
+            <p class="mb-1"><strong><i class="fas fa-mail-bulk me-2 text-terracota"></i> Correspondência oficial:</strong></p>
+            <p class="mb-0">Bah Objetos Guimaraes - Comercio de Materiais de Decoracoes Ltda.<br>
+            Avenida Para, 1301, Navegantes<br>
+            Porto Alegre - RS, CEP 90240-592<br>
+            <span class="badge bg-secondary mt-2">CNPJ: 35.255.012/0001-41</span>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- CONTATO E LOCALIZAÇÃO (MAPAS SIMBÓLICO + INFORMAÇÕES DETALHADAS) -->
-<section id="contato" class="py-5 bg-white">
-    <div class="container py-4">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="section-title">Fale com a gente</h2>
-            <p class="lead text-secondary">Atendimento rápido e personalizado. Escolha o melhor canal.</p>
-        </div>
-        <div class="row g-5">
-            <div class="col-md-5" data-aos="fade-right">
-                <div class="bg-light p-4 rounded-4 h-100 shadow-sm">
-                    <h4><i class="bi bi-headset"></i> Central de Atendimento</h4>
-                    <ul class="list-unstyled mt-4">
-                        <li class="mb-3"><i class="bi bi-whatsapp fs-5 text-success me-2"></i> <strong>WhatsApp</strong><br> (91) 99231-0808 <a href="https://wa.me/5591992310808" class="small text-info">Clique e converse</a></li>
-                        <li class="mb-3"><i class="bi bi-telephone-fill fs-5 me-2 text-primary"></i> <strong>Telefone / Ligar</strong><br> (91) 99231-0808</li>
-                        <li class="mb-3"><i class="bi bi-envelope-fill fs-5 me-2 text-secondary"></i> <strong>E-mail comercial</strong><br> marcosabreu@iblnet.com.br</li>
-                        <li class="mb-3"><i class="bi bi-geo-alt-fill fs-5 me-2 text-danger"></i> <strong>Endereço Matriz</strong><br> Av. Barao de Capanema, 989, Centro, Capanema-PA, CEP 68700-005</li>
-                    </ul>
-                    <div class="mt-4 p-3 bg-white rounded-3 border">
-                        <i class="bi bi-info-circle-fill text-info"></i> <strong>Horário de Atendimento:</strong> Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h. Suporte técnico via WhatsApp 24h emergencial.
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-7" data-aos="fade-left">
-                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
-                    <div class="ratio ratio-16x9 bg-dark">
-                        <!-- Mapa interativo simulado com iframe do OpenStreetMap / localização Capanema PA -->
-                        <iframe class="rounded-3" src="https://www.openstreetmap.org/export/embed.html?bbox=-47.1886,-1.1987,-47.1786,-1.1887&layer=mapnik&marker=-1.1937,-47.1836" style="border:0; filter: brightness(0.98);" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                    <div class="p-3 bg-light small text-muted">📍 Avenida Barao de Capanema, 989 – Centro, Capanema/PA. Próximo ao centro da cidade.</div>
-                </div>
-                <div class="mt-4 d-flex flex-wrap gap-2 justify-content-between align-items-center">
-                    <div><i class="bi bi-check-circle-fill text-info"></i> <strong>CEP para correspondência:</strong> 68700-005</div>
-                    <div><span class="badge bg-info text-dark">Atendimento personalizado</span></div>
-                </div>
-            </div>
-        </div>
+<!-- HORÁRIO E FRASE FINAL -->
+<div class="container py-4">
+  <div class="row g-3 align-items-center">
+    <div class="col-md-8">
+      <div class="d-flex flex-wrap gap-4 justify-content-md-start justify-content-center">
+        <div><i class="far fa-clock text-terracota me-2"></i> <strong>Horário de funcionamento:</strong> Seg–Sex 9h–18h | Sáb 9h–14h</div>
+        <div><i class="fas fa-credit-card text-terracota me-2"></i> <strong>Formas de pagamento:</strong> Pix, Cartões, Boleto</div>
+      </div>
     </div>
-</section>
+    <div class="col-md-4 text-md-end text-center">
+      <span class="badge bg-areia text-dark rounded-pill px-4 py-2"><i class="fas fa-check-circle text-terracota"></i> Atendimento personalizado</span>
+    </div>
+  </div>
+</div>
 
-<!-- FOOTER COM INFORMAÇÕES ADICIONAIS E CNPJ -->
-<footer class="footer text-white pt-5 pb-4">
-    <div class="container">
-        <div class="row gy-4">
-            <div class="col-md-4">
-                <h4 class="fw-bold">M L <span class="text-info">NET</span></h4>
-                <p>Provedor de internet com fibra óptica de verdade em Capanema/PA. Inovação, velocidade e compromisso com a sua conexão.</p>
-                <div class="d-flex gap-3 fs-4">
-                    <a href="https://wa.me/5591992310808" class="text-white-50"><i class="bi bi-whatsapp"></i></a>
-                    <a href="mailto:marcosabreu@iblnet.com.br" class="text-white-50"><i class="bi bi-envelope"></i></a>
-                    <a href="#" class="text-white-50"><i class="bi bi-instagram"></i></a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <h5>Contato Rápido</h5>
-                <ul class="list-unstyled">
-                    <li><i class="bi bi-telephone-fill me-2"></i> (91) 99231-0808</li>
-                    <li><i class="bi bi-envelope me-2"></i> marcosabreu@iblnet.com.br</li>
-                    <li><i class="bi bi-building me-2"></i> CNPJ: 36.641.406/0001-09</li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Endereço</h5>
-                <address>Av. Barao de Capanema, 989, Centro <br> Capanema - PA, 68700-005<br> Brasil</address>
-                <small>© 2026 M L Net Serv. de Telecomunicações LTDA. Todos os direitos reservados.</small>
-            </div>
+<!-- FOOTER completo com informações fiscais e redes -->
+<footer class="pt-5 pb-4 mt-4">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5">
+        <h5 class="fw-bold text-white"><i class="fas fa-gem me-2 text-terracota"></i> Bah Objetos</h5>
+        <p class="small">Transformando lares com objetos de decoração exclusivos desde 2019. Criatividade, qualidade e inovação em cada peça.</p>
+        <div class="mt-3">
+          <a href="mailto:contato@bahbaloes.com.br" class="me-3 text-white-50"><i class="far fa-envelope"></i></a>
+          <a href="https://wa.me/5551998078991" class="me-3 text-white-50"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="text-white-50"><i class="fab fa-instagram"></i></a>
         </div>
-        <hr class="bg-secondary mt-4">
-        <div class="text-center text-white-50 small">M L Net - Provedor de acesso às redes de comunicações (CNAE 61.90-6-01) | Situação: Ativa | Desde 2020 conectando pessoas.</div>
+      </div>
+      <div class="col-md-4">
+        <h6 class="fw-bold text-white">Documentos</h6>
+        <ul class="list-unstyled small">
+          <li>CNPJ: 35.255.012/0001-41</li>
+          <li>IE/RS: 096/3792440</li>
+          <li>Razão Social: Guimaraes - Comercio de Materiais de Decoracoes Ltda.</li>
+          <li>Data de Abertura: 21/10/2019 – Situação: Ativa</li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold text-white">Atendimento</h6>
+        <ul class="list-unstyled small">
+          <li><i class="fas fa-phone-alt me-1"></i> (51) 99807-8991</li>
+          <li><i class="fas fa-store me-1"></i> Avenida Para, 1301</li>
+          <li><i class="fas fa-envelope me-1"></i> contato@bahbaloes.com.br</li>
+        </ul>
+      </div>
     </div>
+    <hr class="opacity-25 mt-4">
+    <div class="text-center small pt-2">
+      &copy; 2025 Bah Objetos | Comércio de Materiais de Decoração | Todos os direitos reservados<br>
+      Desenvolvido para inspirar lares – Porto Alegre, RS.
+    </div>
+  </div>
 </footer>
 
-<!-- Scripts Bootstrap + AOS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ duration: 800, once: true, offset: 100 });
-    // Efeito de navbar ao scroll
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if(window.scrollY > 50) {
-            navbar.style.background = "rgba(7, 20, 38, 0.96)";
-            navbar.style.backdropFilter = "blur(16px)";
-        } else {
-            navbar.style.background = "rgba(7, 20, 38, 0.85)";
-        }
-    });
+  // small interactive: adiciona tooltip para whatsapp flutuante (opcional)
+  // tudo responsivo pronto
+  console.log("Site Bah Objetos carregado com sucesso!");
 </script>
 </body>
 </html>
