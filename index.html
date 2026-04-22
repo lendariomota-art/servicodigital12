@@ -1,24 +1,495 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App</title>
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>M L Net | Conectividade que transforma</title>
+    <!-- Bootstrap 5 CSS + Icons + Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts (tipografia inovadora) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animação (efeitos suaves) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .navbar-brand, .btn, .display-font {
+            font-family: 'Space Grotesk', monospace;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* Cores inovadoras: azul profundo + toque neon/ciano */
+        :root {
+            --primary-dark: #0a1a2f;
+            --primary-electric: #00e0ff;
+            --primary-neon: #0ae0ff;
+            --secondary-glow: #6c63ff;
+            --accent-coral: #ff5e7c;
+            --gray-bg: #f1f5f9;
+        }
+
+        .bg-gradient-hero {
+            background: linear-gradient(135deg, #071426 0%, #0b2b3f 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-gradient-hero::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 70%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(0,224,255,0.08) 0%, rgba(10,26,47,0) 80%);
+            pointer-events: none;
+        }
+
+        .navbar {
+            backdrop-filter: blur(12px);
+            background: rgba(7, 20, 38, 0.85) !important;
+            transition: all 0.3s;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.7rem;
+            background: linear-gradient(120deg, #fff, #0ae0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent !important;
+        }
+
+        .btn-neon {
+            background: transparent;
+            border: 1.5px solid var(--primary-electric);
+            color: white;
+            border-radius: 40px;
+            padding: 10px 28px;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-neon:hover {
+            background: var(--primary-electric);
+            color: #0a1a2f;
+            box-shadow: 0 0 12px rgba(0,224,255,0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(95deg, #00e0ff, #6c63ff);
+            border: none;
+            border-radius: 40px;
+            padding: 12px 32px;
+            font-weight: 700;
+            color: #0a1a2f;
+            transition: all 0.3s;
+        }
+
+        .btn-primary-custom:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -8px rgba(0,224,255,0.5);
+            color: #0a1a2f;
+        }
+
+        .card-glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(0px);
+            border-radius: 32px;
+            border: 1px solid rgba(0,224,255,0.2);
+            transition: all 0.3s;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.05);
+        }
+
+        .card-glass:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-electric);
+            box-shadow: 0 25px 40px -12px rgba(0,224,255,0.2);
+        }
+
+        .icon-circle {
+            width: 70px;
+            height: 70px;
+            background: rgba(10, 224, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-electric);
+            margin-bottom: 1.2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(90deg, #00e0ff, #6c63ff);
+            border-radius: 4px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 28px;
+            transition: 0.2s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .footer {
+            background: #071426;
+            border-top: 1px solid rgba(0,224,255,0.2);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(37,211,102,0.3);
+            z-index: 99;
+            transition: 0.2s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.08);
+            background: #20b859;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            .hero-title {
+                font-size: 2.3rem;
+            }
+        }
+
+        .badge-years {
+            background: rgba(0,224,255,0.2);
+            backdrop-filter: blur(4px);
+            border-radius: 100px;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #0ae0ff;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0a1a2f, #0b2b3f);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    </style>
 </head>
 <body>
 
-<iframe src="https://www8.receita-fazenda.info/mei-cnpj"></iframe>
+<!-- Botão flutuante Whatsapp -->
+<a href="https://wa.me/5591992310808?text=Olá!%20Gostaria%20de%20mais%20informações%20sobre%20os%20planos%20da%20M%20L%20Net." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="bi bi-whatsapp"></i>
+</a>
 
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+    <div class="container">
+        <a class="navbar-brand" href="#">M L<span style="color:#0ae0ff;"> NET</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
+                <li class="nav-item"><a class="nav-link active" href="#home">Início</a></li>
+                <li class="nav-item"><a class="nav-link" href="#planos">Planos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+            </ul>
+            <a href="#contato" class="btn btn-neon ms-3 d-none d-lg-inline-block"><i class="bi bi-lightning-charge-fill me-1"></i> Conectar agora</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="home" class="bg-gradient-hero text-white pt-5 mt-5" style="padding-top: 6rem !important;">
+    <div class="container py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7" data-aos="fade-up" data-aos-duration="800">
+                <div class="badge-years mb-3 d-inline-flex"><i class="bi bi-star-fill me-1" style="color:#0ae0ff;"></i> 6+ anos de inovação</div>
+                <h1 class="display-4 fw-bold hero-title">Internet Fibra que <span style="color:#0ae0ff;">acelera</span> seu futuro</h1>
+                <p class="lead mt-3 opacity-75">Conectividade ultrarrápida, estabilidade e suporte humano. Transforme sua experiência digital com a M L Net, o provedor que entende Capanema e leva alta performance para sua casa ou negócio.</p>
+                <div class="d-flex flex-wrap gap-3 mt-4">
+                    <a href="#planos" class="btn btn-primary-custom btn-lg px-4"><i class="bi bi-wifi"></i> Conheça os planos</a>
+                    <a href="tel:+5591992310808" class="btn btn-outline-light btn-lg px-4"><i class="bi bi-telephone-fill"></i> (91) 99231-0808</a>
+                </div>
+                <div class="row mt-5 pt-3 g-3">
+                    <div class="col-sm-4 d-flex align-items-center gap-2"><i class="bi bi-check-circle-fill text-info fs-4"></i> <span>Fibra 100%</span></div>
+                    <div class="col-sm-4 d-flex align-items-center gap-2"><i class="bi bi-shield-check text-info fs-4"></i> <span>Suporte Local</span></div>
+                    <div class="col-sm-4 d-flex align-items-center gap-2"><i class="bi bi-graph-up text-info fs-4"></i> <span>Baixa latência</span></div>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center" data-aos="fade-left" data-aos-delay="200">
+                <img src="https://placehold.co/600x500/0a1a2f/00e0ff?text=M+L+NET+FIBRA" alt="Ilustração fibra óptica" class="img-fluid rounded-4 shadow-lg" style="background: linear-gradient(145deg, #0c2940, #071426);">
+                <!-- Imagem ilustrativa inovadora (placeholder com design) mas podemos usar SVG simbólico -->
+            </div>
+        </div>
+    </div>
+    <div class="wave-bottom" style="height: 60px; background: linear-gradient(145deg, #f8fafc 30%, transparent);"></div>
+</section>
+
+<!-- DIFERENCIAIS COM ÍCONES E FRASES INOVADORAS -->
+<section class="py-5" style="background: #f8fafc;">
+    <div class="container py-4">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="badge bg-dark text-info px-3 py-2 rounded-pill mb-2"><i class="bi bi-stars"></i> Experiência ML Net</span>
+            <h2 class="section-title">Conectividade que inspira</h2>
+            <p class="lead text-secondary mt-3">Mais que internet, um novo padrão para Capanema e região.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="card-glass p-4 text-center h-100">
+                    <div class="icon-circle mx-auto"><i class="bi bi-cpu fs-1"></i></div>
+                    <h4 class="fw-bold">Tecnologia XPTO Fiber</h4>
+                    <p class="text-secondary">Rede de última geração com latência reduzida e simetria real: upload e download na mesma velocidade para você jogar, trabalhar e assistir sem travar.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="card-glass p-4 text-center h-100">
+                    <div class="icon-circle mx-auto"><i class="bi bi-shield-lock-fill fs-1"></i></div>
+                    <h4 class="fw-bold">Segurança Digital</h4>
+                    <p class="text-secondary">Proteção contra ameaças online, firewall integrado e navegação segura para sua família e negócio. Conte com a tranquilidade ML Net.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+                <div class="card-glass p-4 text-center h-100">
+                    <div class="icon-circle mx-auto"><i class="bi bi-headset fs-1"></i></div>
+                    <h4 class="fw-bold">Atendimento Humanizado</h4>
+                    <p class="text-secondary">Equipe técnica local, suporte rápido via WhatsApp e compromisso com a solução no menor tempo. Sua satisfação é nossa prioridade.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PLANOS COM INFORMAÇÕES MODERNAS -->
+<section id="planos" class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Planos Sob Medida</h2>
+            <p class="text-secondary mt-3">Escolha o plano ideal para sua navegação, do básico ao ultra conectado.</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+                <div class="card info-card h-100 p-4 text-center">
+                    <i class="bi bi-wifi fs-1 text-info"></i>
+                    <h3 class="mt-3 fw-bold">300 Mega</h3>
+                    <div class="display-6 fw-bold text-dark">R$ 89,90<span class="fs-6 text-secondary">/mês</span></div>
+                    <ul class="list-unstyled mt-4 text-start">
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Download 300 Mbps</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Upload 300 Mbps</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Wi-Fi 6 de alto desempenho</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Suporte prioritário</li>
+                    </ul>
+                    <div class="mt-auto"><a href="https://wa.me/5591992310808?text=Olá!%20Tenho%20interesse%20no%20plano%20300%20Mega" class="btn btn-outline-info rounded-pill w-100">Assinar via WhatsApp</a></div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+                <div class="card info-card h-100 p-4 text-center border-info shadow">
+                    <i class="bi bi-lightning-charge-fill fs-1 text-warning"></i>
+                    <h3 class="mt-3 fw-bold">500 Mega</h3>
+                    <div class="display-6 fw-bold text-dark">R$ 119,90<span class="fs-6 text-secondary">/mês</span></div>
+                    <ul class="list-unstyled mt-4 text-start">
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Download 500 Mbps</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Upload 500 Mbps</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Roteador Mesh incluso</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Instalação grátis</li>
+                    </ul>
+                    <div class="mt-auto"><a href="https://wa.me/5591992310808?text=Quero%20contratar%20o%20plano%20500%20Mega%20M%20L%20NET" class="btn btn-info rounded-pill w-100 text-white">Contrate já</a></div>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+                <div class="card info-card h-100 p-4 text-center">
+                    <i class="bi bi-gem fs-1 text-primary"></i>
+                    <h3 class="mt-3 fw-bold">1 GIGA</h3>
+                    <div class="display-6 fw-bold text-dark">R$ 179,90<span class="fs-6 text-secondary">/mês</span></div>
+                    <ul class="list-unstyled mt-4 text-start">
+                        <li><i class="bi bi-check-lg text-info me-2"></i> 1000 Mbps (1Gb)</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Fibra óptica dedicada</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Suporte VIP 24h</li>
+                        <li><i class="bi bi-check-lg text-info me-2"></i> Bônus em streaming</li>
+                    </ul>
+                    <div class="mt-auto"><a href="https://wa.me/5591992310808?text=Quero%20o%20plano%20Giga%20da%20M%20L%20NET" class="btn btn-outline-info rounded-pill w-100">Quero 1 Giga</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOBRE NÓS COM INFORMAÇÕES COMPLETAS (CNPJ, ABERTURA, ATIVIDADES) -->
+<section id="sobre" class="py-5" style="background: #f1f5fc;">
+    <div class="container py-4">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+                <span class="badge bg-info bg-opacity-25 text-dark mb-2 py-2 px-3 rounded-pill"><i class="bi bi-building"></i> Sobre a M L Net</span>
+                <h2 class="display-5 fw-bold">Provedor 100% paraense, <span class="text-info">conectando pessoas</span> desde 2020</h2>
+                <p class="mt-3 lead">A <strong>M L Net Serv. de Telecomunicacoes LTDA</strong> nasceu com a missão de levar internet de verdade para Capanema e região. Atuamos com responsabilidade, tecnologia de ponta e atendimento ágil.</p>
+                <div class="row mt-4">
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex"><i class="bi bi-cnpj fs-3 me-3 text-info"></i><div><strong>CNPJ</strong><br>36.641.406/0001-09</div></div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex"><i class="bi bi-calendar-check fs-3 me-3 text-info"></i><div><strong>Fundação</strong><br>11/03/2020 • 6 anos e 19 dias</div></div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex"><i class="bi bi-activity fs-3 me-3 text-info"></i><div><strong>Situação Cadastral</strong><br>Ativa • CNAE: 61.90-6-01</div></div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="d-flex"><i class="bi bi-geo-alt-fill fs-3 me-3 text-info"></i><div><strong>Localização</strong><br>Av. Barao de Capanema, 989 - Centro, Capanema/PA</div></div>
+                    </div>
+                </div>
+                <div class="alert alert-light mt-2 border-0 shadow-sm"><i class="bi bi-envelope-paper-fill me-2 text-info"></i> Correspondência: M L Net Serv. de Telecomunicacoes LTDA, Av. Barao de Capanema 989, Centro, Capanema - PA, CEP 68700-005</div>
+            </div>
+            <div class="col-lg-6 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                <div class="card-glass p-4 bg-white">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <i class="bi bi-quote fs-1 text-info"></i>
+                        <h4 class="mb-0 fw-bold">Compromisso com a excelência</h4>
+                    </div>
+                    <p class="fst-italic">"Somos especialistas em conectar famílias e empresas com a internet de verdade: estável, rápida e com suporte que resolve. Nossa trajetória de 6 anos reflete o respeito e confiança dos clientes de Capanema."</p>
+                    <hr>
+                    <div class="d-flex justify-content-between flex-wrap">
+                        <div><i class="bi bi-trophy-fill text-warning"></i> <strong>+2.500</strong> clientes ativos</div>
+                        <div><i class="bi bi-cloud-check-fill text-info"></i> 99.8% de uptime</div>
+                        <div><i class="bi bi-star-fill text-info"></i> Nota 4.9/5</div>
+                    </div>
+                </div>
+                <div class="mt-4 d-flex gap-3 justify-content-start">
+                    <a href="mailto:marcosabreu@iblnet.com.br" class="btn btn-outline-dark rounded-pill"><i class="bi bi-envelope"></i> Enviar e-mail</a>
+                    <a href="tel:+5591992310808" class="btn btn-dark rounded-pill"><i class="bi bi-telephone"></i> (91) 99231-0808</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTATO E LOCALIZAÇÃO (MAPAS SIMBÓLICO + INFORMAÇÕES DETALHADAS) -->
+<section id="contato" class="py-5 bg-white">
+    <div class="container py-4">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">Fale com a gente</h2>
+            <p class="lead text-secondary">Atendimento rápido e personalizado. Escolha o melhor canal.</p>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-5" data-aos="fade-right">
+                <div class="bg-light p-4 rounded-4 h-100 shadow-sm">
+                    <h4><i class="bi bi-headset"></i> Central de Atendimento</h4>
+                    <ul class="list-unstyled mt-4">
+                        <li class="mb-3"><i class="bi bi-whatsapp fs-5 text-success me-2"></i> <strong>WhatsApp</strong><br> (91) 99231-0808 <a href="https://wa.me/5591992310808" class="small text-info">Clique e converse</a></li>
+                        <li class="mb-3"><i class="bi bi-telephone-fill fs-5 me-2 text-primary"></i> <strong>Telefone / Ligar</strong><br> (91) 99231-0808</li>
+                        <li class="mb-3"><i class="bi bi-envelope-fill fs-5 me-2 text-secondary"></i> <strong>E-mail comercial</strong><br> marcosabreu@iblnet.com.br</li>
+                        <li class="mb-3"><i class="bi bi-geo-alt-fill fs-5 me-2 text-danger"></i> <strong>Endereço Matriz</strong><br> Av. Barao de Capanema, 989, Centro, Capanema-PA, CEP 68700-005</li>
+                    </ul>
+                    <div class="mt-4 p-3 bg-white rounded-3 border">
+                        <i class="bi bi-info-circle-fill text-info"></i> <strong>Horário de Atendimento:</strong> Segunda a Sexta: 8h às 18h | Sábado: 8h às 12h. Suporte técnico via WhatsApp 24h emergencial.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7" data-aos="fade-left">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                    <div class="ratio ratio-16x9 bg-dark">
+                        <!-- Mapa interativo simulado com iframe do OpenStreetMap / localização Capanema PA -->
+                        <iframe class="rounded-3" src="https://www.openstreetmap.org/export/embed.html?bbox=-47.1886,-1.1987,-47.1786,-1.1887&layer=mapnik&marker=-1.1937,-47.1836" style="border:0; filter: brightness(0.98);" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="p-3 bg-light small text-muted">📍 Avenida Barao de Capanema, 989 – Centro, Capanema/PA. Próximo ao centro da cidade.</div>
+                </div>
+                <div class="mt-4 d-flex flex-wrap gap-2 justify-content-between align-items-center">
+                    <div><i class="bi bi-check-circle-fill text-info"></i> <strong>CEP para correspondência:</strong> 68700-005</div>
+                    <div><span class="badge bg-info text-dark">Atendimento personalizado</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER COM INFORMAÇÕES ADICIONAIS E CNPJ -->
+<footer class="footer text-white pt-5 pb-4">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-md-4">
+                <h4 class="fw-bold">M L <span class="text-info">NET</span></h4>
+                <p>Provedor de internet com fibra óptica de verdade em Capanema/PA. Inovação, velocidade e compromisso com a sua conexão.</p>
+                <div class="d-flex gap-3 fs-4">
+                    <a href="https://wa.me/5591992310808" class="text-white-50"><i class="bi bi-whatsapp"></i></a>
+                    <a href="mailto:marcosabreu@iblnet.com.br" class="text-white-50"><i class="bi bi-envelope"></i></a>
+                    <a href="#" class="text-white-50"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5>Contato Rápido</h5>
+                <ul class="list-unstyled">
+                    <li><i class="bi bi-telephone-fill me-2"></i> (91) 99231-0808</li>
+                    <li><i class="bi bi-envelope me-2"></i> marcosabreu@iblnet.com.br</li>
+                    <li><i class="bi bi-building me-2"></i> CNPJ: 36.641.406/0001-09</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Endereço</h5>
+                <address>Av. Barao de Capanema, 989, Centro <br> Capanema - PA, 68700-005<br> Brasil</address>
+                <small>© 2026 M L Net Serv. de Telecomunicações LTDA. Todos os direitos reservados.</small>
+            </div>
+        </div>
+        <hr class="bg-secondary mt-4">
+        <div class="text-center text-white-50 small">M L Net - Provedor de acesso às redes de comunicações (CNAE 61.90-6-01) | Situação: Ativa | Desde 2020 conectando pessoas.</div>
+    </div>
+</footer>
+
+<!-- Scripts Bootstrap + AOS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 800, once: true, offset: 100 });
+    // Efeito de navbar ao scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if(window.scrollY > 50) {
+            navbar.style.background = "rgba(7, 20, 38, 0.96)";
+            navbar.style.backdropFilter = "blur(16px)";
+        } else {
+            navbar.style.background = "rgba(7, 20, 38, 0.85)";
+        }
+    });
+</script>
 </body>
 </html>
