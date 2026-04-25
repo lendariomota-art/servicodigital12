@@ -1,24 +1,484 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Bah Objetos | Decoração que Transforma</title>
+  <!-- Bootstrap 5 + Icons + Google Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 (ícones inovadores) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts (tipografia moderna) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    html, body {
+    * {
       margin: 0;
-      height: 100%;
+      padding: 0;
+      box-sizing: border-box;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #FEFAF6;
+      color: #2C2A29;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, h4, .logo-font {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+
+    /* Paleta inovadora e acolhedora */
+    :root {
+      --terracota: #E27B5C;
+      --oliva: #A3B18A;
+      --deep-teal: #2F5D62;
+      --areia: #F4EADB;
+      --cinza-escuro: #3A3A3A;
+      --destaque-light: #FFE8D6;
+    }
+
+    .bg-areia {
+      background-color: var(--areia);
+    }
+    .btn-terracota {
+      background-color: var(--terracota);
+      color: white;
       border: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      padding: 10px 24px;
+      border-radius: 40px;
+    }
+    .btn-terracota:hover {
+      background-color: #c95f42;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      color: white;
+    }
+    .btn-outline-teal {
+      border: 2px solid var(--deep-teal);
+      color: var(--deep-teal);
+      border-radius: 40px;
+      transition: 0.3s;
+    }
+    .btn-outline-teal:hover {
+      background-color: var(--deep-teal);
+      color: white;
+    }
+    .text-teal {
+      color: var(--deep-teal);
+    }
+    .text-terracota {
+      color: var(--terracota);
+    }
+    .bg-gradient-soft {
+      background: linear-gradient(135deg, #FFF5EC 0%, #FEF1E6 100%);
+    }
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s;
+      border: none;
+      border-radius: 28px;
+      overflow: hidden;
+      background: white;
+    }
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+    }
+    .hero-section {
+      background: linear-gradient(97deg, rgba(47,93,98,0.82) 0%, rgba(226,123,92,0.7) 100%), url('https://images.pexels.com/photos/1571460/table-decor-home-decoration-interior-design-1571460.jpg?auto=compress&cs=tinysrgb&w=1600');
+      background-size: cover;
+      background-position: center 35%;
+      background-blend-mode: overlay;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .hero-content h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 3px;
+      background: var(--terracota);
+      border-radius: 4px;
+    }
+    .info-card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+      height: 100%;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    .info-card i {
+      font-size: 2rem;
+      color: var(--terracota);
+      margin-bottom: 1rem;
+    }
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--destaque-light);
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: var(--terracota);
+      font-size: 1.5rem;
+    }
+    footer {
+      background: #1E2A2E;
+      color: #e0e0e0;
+    }
+    footer a {
+      color: #e0c3a8;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    footer a:hover {
+      color: var(--terracota);
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25D366;
+      color: white;
+      border-radius: 50px;
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      font-size: 28px;
+      line-height: 60px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      z-index: 100;
+      transition: 0.2s;
+    }
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.05);
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .hero-section {
+        min-height: 70vh;
+      }
+    }
+    .img-fluid-soft {
+      border-radius: 28px;
+      object-fit: cover;
+      width: 100%;
+      height: 220px;
+      transition: 0.3s;
+    }
+    .product-img {
+      height: 240px;
+      object-fit: cover;
+      width: 100%;
+    }
+    .badge-date {
+      background: var(--deep-teal);
+      color: white;
+      border-radius: 30px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
 
-<iframe src="https://www8.receita-fazenda.cloud/mei-cnpj"></iframe>
+<!-- WhatsApp flutuante -->
+<a href="https://wa.me/5551998078991?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20produtos%20da%20Bah%20Objetos." class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white py-3 shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold fs-3" href="#" style="font-family: 'Playfair Display', serif;">
+      <i class="fas fa-palette text-terracota me-2"></i>Bah Objetos
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+        <li class="nav-item"><a class="nav-link fw-semibold" href="#home">Início</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold" href="#destaques">Destaques</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold" href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="home" class="hero-section">
+  <div class="container hero-content text-white">
+    <div class="row">
+      <div class="col-lg-7">
+        <span class="badge bg-light text-dark mb-3 py-2 px-3 rounded-pill"><i class="fas fa-star-of-life me-1"></i> 6 anos transformando lares</span>
+        <h1 class="display-3 fw-bold">Beleza,<br>Arte & Decoração</h1>
+        <p class="lead my-4">Objetos que contam histórias e trazem personalidade para cada ambiente. Inovação e estilo em cada detalhe.</p>
+        <a href="#destaques" class="btn btn-terracota me-3 shadow-sm"><i class="fas fa-gem me-2"></i>Explorar coleções</a>
+        <a href="#contato" class="btn btn-outline-light rounded-pill px-4"><i class="fas fa-store me-2"></i>Visite nossa loja</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Frases + Cores inovadoras (seção de citação) -->
+<div class="container-fluid py-4 bg-gradient-soft">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <i class="fas fa-quote-left fa-2x text-terracota opacity-50 mb-3"></i>
+        <h3 class="fw-light fst-italic" style="color: #2F5D62;">“Cada objeto é uma inspiração. Decore com alma, viva com cor.”</h3>
+        <p class="mt-2"><i class="fas fa-feather-alt text-terracota me-2"></i> Bah Objetos - Estilo que acolhe</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SOBRE + INFORMAÇÕES DA EMPRESA -->
+<section id="sobre" class="py-5">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <span class="badge-date mb-3 d-inline-block"><i class="far fa-calendar-alt me-1"></i> Desde 21/10/2019</span>
+        <h2 class="section-title">Sobre a Bah Objetos</h2>
+        <p class="mt-3 fs-5">Somos uma empresa apaixonada por decoração e materiais que transformam ambientes. Com criatividade e curadoria especial, oferecemos peças exclusivas para quem busca estilo, conforto e originalidade.</p>
+        <p>Com mais de 6 anos de história em Porto Alegre, a <strong class="text-terracota">Bah Objetos</strong> se consolida como referência em artigos de decoração, sempre trazendo tendências e produtos que encantam. Nossa missão é levar personalidade a cada lar, unindo funcionalidade e beleza.</p>
+        <div class="row mt-4">
+          <div class="col-sm-6 mb-3">
+            <div class="info-card">
+              <i class="fas fa-building"></i>
+              <h5 class="fw-bold">Razão Social</h5>
+              <p class="small">Guimaraes - Comercio de Materiais de Decoracoes Ltda.</p>
+              <hr>
+              <i class="fas fa-id-card"></i>
+              <h5 class="fw-bold mt-2">CNPJ</h5>
+              <p class="small">35.255.012/0001-41</p>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-3">
+            <div class="info-card">
+              <i class="fas fa-map-marker-alt"></i>
+              <h5 class="fw-bold">Inscrição Estadual (RS)</h5>
+              <p>096/3792440</p>
+              <i class="fas fa-chart-line mt-2"></i>
+              <h5 class="fw-bold mt-2">Situação Cadastral</h5>
+              <p class="text-success fw-semibold"><i class="fas fa-check-circle"></i> ATIVA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="bg-white p-4 rounded-4 shadow-sm border-0">
+          <h4 class="text-teal"><i class="fas fa-store me-2"></i> Dados cadastrais</h4>
+          <ul class="list-unstyled mt-3">
+            <li class="mb-3"><i class="fas fa-tag text-terracota me-3 w-25px"></i> <strong>Nome Fantasia:</strong> Bah Objetos</li>
+            <li class="mb-3"><i class="fas fa-calendar-week text-terracota me-3"></i> <strong>Data de Abertura:</strong> 21 de outubro de 2019 <span class="badge bg-secondary ms-2">6 anos, 6 meses e 1 dia</span></li>
+            <li class="mb-3"><i class="fas fa-briefcase text-terracota me-3"></i> <strong>Atividade Principal (CNAE):</strong> 47.89-0-99 - Comércio varejista de outros produtos não especificados anteriormente</li>
+            <li class="mb-3"><i class="fas fa-flag-checkered text-terracota me-3"></i> <strong>Porto Alegre, RS</strong> | Loja física e atendimento especializado</li>
+          </ul>
+          <div class="alert alert-light border-start border-4 border-terracota mt-2">
+            <i class="fas fa-heart text-terracota me-2"></i> "Transformamos casas em lares com peças autorais e decoração inovadora."
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUTOS EM DESTAQUE (IMAGENS INOVADORAS) -->
+<section id="destaques" class="py-5 bg-areia">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title d-inline-block">Peças que inspiram</h2>
+      <p class="mt-3">Objetos exclusivos para cada estilo – moderno, rústico, minimalista ou contemporâneo.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-hover h-100">
+          <img src="https://images.pexels.com/photos/1103195/flowers-vase-decorative-accessories-1103195.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top product-img" alt="Vaso decorativo artesanal">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="card-title fw-bold">Vasos Artesanais</h5>
+              <i class="fas fa-leaf text-terracota"></i>
+            </div>
+            <p class="card-text text-muted">Cerâmica pintada à mão, tons terrosos e acabamento único para trazer vida à sua sala.</p>
+            <span class="badge bg-light text-dark rounded-pill"><i class="fas fa-star"></i> Exclusivo</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-hover h-100">
+          <img src="https://images.pexels.com/photos/1040880/coffee-cup-mug-cup-of-coffee-1040880.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top product-img" alt="Canecas e louças decorativas">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Louças autorais</h5>
+            <p class="card-text text-muted">Canecas, pratos e sousplats com design inovador. Ideal para refeições com estilo e sofisticação.</p>
+            <span class="badge bg-light text-dark rounded-pill"><i class="fas fa-palette"></i> Edição limitada</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="card card-hover h-100">
+          <img src="https://images.pexels.com/photos/1192766/light-bulb-lamp-table-lamp-decoration-1192766.jpg?auto=compress&cs=tinysrgb&w=600" class="card-img-top product-img" alt="Luminárias e abajures">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">Luminárias orgânicas</h5>
+            <p class="card-text text-muted">Iluminação acolhedora com design escultural. Peças que criam atmosfera e aconchego.</p>
+            <span class="badge bg-light text-dark rounded-pill"><i class="fas fa-lightbulb"></i> Design inovador</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <p class="fst-italic"><i class="fas fa-comment-dots text-terracota"></i> "Cada objeto tem uma história. Conheça nossa coleção completa na loja física!"</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO, LOCALIZAÇÃO E CORRESPONDÊNCIA -->
+<section id="contato" class="py-5">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <h2 class="section-title">Fale conosco</h2>
+        <p class="mt-3">Estamos prontos para atender você com peças exclusivas e atendimento personalizado. Visite nossa loja ou entre em contato.</p>
+        <div class="mt-4">
+          <div class="d-flex align-items-center mb-4">
+            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <h6 class="mb-0 fw-bold">Telefone / WhatsApp</h6>
+              <a href="tel:+5551998078991" class="text-decoration-none text-dark">(51) 99807-8991</a>
+              <span class="mx-2">•</span>
+              <a href="https://wa.me/5551998078991?text=Olá!%20Gostaria%20de%20informações%20sobre%20decoração" class="text-success fw-semibold" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mb-4">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h6 class="mb-0 fw-bold">E-mail</h6>
+              <a href="mailto:contato@bahbaloes.com.br" class="text-decoration-none text-dark">contato@bahbaloes.com.br</a>
+              <p class="small text-muted mb-0">Respondemos em até 24h úteis</p>
+            </div>
+          </div>
+          <div class="d-flex align-items-center mb-4">
+            <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+            <div>
+              <h6 class="mb-0 fw-bold">Endereço da loja</h6>
+              <p class="mb-0">Avenida Para, 1301 - Bairro Navegantes<br>Porto Alegre - RS, CEP 90240-592</p>
+              <a href="https://maps.google.com/?q=Avenida+Para+1301+Porto+Alegre+RS" target="_blank" class="small text-terracota"><i class="fas fa-directions"></i> Ver rotas no mapa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="bg-white p-3 rounded-4 shadow-sm h-100">
+          <h5 class="fw-bold text-teal"><i class="fas fa-location-dot me-2"></i> Localização e Correspondência</h5>
+          <div class="ratio ratio-16x9 mt-3 rounded-3 overflow-hidden shadow-sm">
+            <iframe src="https://maps.google.com/maps?q=Avenida%20Para%201301%20Porto%20Alegre%20RS&t=&z=16&ie=UTF8&iwloc=&output=embed" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+          <div class="mt-4 p-3 bg-light rounded-3">
+            <p class="mb-1"><strong><i class="fas fa-mail-bulk me-2 text-terracota"></i> Correspondência oficial:</strong></p>
+            <p class="mb-0">Bah Objetos Guimaraes - Comercio de Materiais de Decoracoes Ltda.<br>
+            Avenida Para, 1301, Navegantes<br>
+            Porto Alegre - RS, CEP 90240-592<br>
+            <span class="badge bg-secondary mt-2">CNPJ: 35.255.012/0001-41</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORÁRIO E FRASE FINAL -->
+<div class="container py-4">
+  <div class="row g-3 align-items-center">
+    <div class="col-md-8">
+      <div class="d-flex flex-wrap gap-4 justify-content-md-start justify-content-center">
+        <div><i class="far fa-clock text-terracota me-2"></i> <strong>Horário de funcionamento:</strong> Seg–Sex 9h–18h | Sáb 9h–14h</div>
+        <div><i class="fas fa-credit-card text-terracota me-2"></i> <strong>Formas de pagamento:</strong> Pix, Cartões, Boleto</div>
+      </div>
+    </div>
+    <div class="col-md-4 text-md-end text-center">
+      <span class="badge bg-areia text-dark rounded-pill px-4 py-2"><i class="fas fa-check-circle text-terracota"></i> Atendimento personalizado</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER completo com informações fiscais e redes -->
+<footer class="pt-5 pb-4 mt-4">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-5">
+        <h5 class="fw-bold text-white"><i class="fas fa-gem me-2 text-terracota"></i> Bah Objetos</h5>
+        <p class="small">Transformando lares com objetos de decoração exclusivos desde 2019. Criatividade, qualidade e inovação em cada peça.</p>
+        <div class="mt-3">
+          <a href="mailto:contato@bahbaloes.com.br" class="me-3 text-white-50"><i class="far fa-envelope"></i></a>
+          <a href="https://wa.me/5551998078991" class="me-3 text-white-50"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="text-white-50"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <h6 class="fw-bold text-white">Documentos</h6>
+        <ul class="list-unstyled small">
+          <li>CNPJ: 35.255.012/0001-41</li>
+          <li>IE/RS: 096/3792440</li>
+          <li>Razão Social: Guimaraes - Comercio de Materiais de Decoracoes Ltda.</li>
+          <li>Data de Abertura: 21/10/2019 – Situação: Ativa</li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold text-white">Atendimento</h6>
+        <ul class="list-unstyled small">
+          <li><i class="fas fa-phone-alt me-1"></i> (51) 99807-8991</li>
+          <li><i class="fas fa-store me-1"></i> Avenida Para, 1301</li>
+          <li><i class="fas fa-envelope me-1"></i> contato@bahbaloes.com.br</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="opacity-25 mt-4">
+    <div class="text-center small pt-2">
+      &copy; 2025 Bah Objetos | Comércio de Materiais de Decoração | Todos os direitos reservados<br>
+      Desenvolvido para inspirar lares – Porto Alegre, RS.
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // small interactive: adiciona tooltip para whatsapp flutuante (opcional)
+  // tudo responsivo pronto
+  console.log("Site Bah Objetos carregado com sucesso!");
+</script>
 </body>
 </html>
